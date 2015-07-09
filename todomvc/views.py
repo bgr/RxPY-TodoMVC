@@ -1,4 +1,11 @@
-from PyQt4 import QtGui
+try:
+    from PyQt4.QtGui import QLineEdit, QVBoxLayout, QLabel, QHBoxLayout, \
+        QWidget, QCheckBox, QPushButton
+except ImportError:
+    from PyQt5.QtWidgets import QLineEdit, QVBoxLayout, QLabel, QHBoxLayout, \
+        QWidget, QCheckBox, QPushButton
+    from PyQt5.QtGui import QIcon
+
 import rx
 
 
@@ -40,7 +47,7 @@ class MainPresenter:
             self._item_presenters.append(presenter)
 
 
-class MainView(QtGui.QWidget):
+class MainView(QWidget):
 
     def __init__(self):
         super().__init__()
@@ -50,22 +57,22 @@ class MainView(QtGui.QWidget):
         self.setWindowTitle("RxPY TodoMVC")
 
         # Used to enter text for a new todo list item
-        self.textbox = QtGui.QLineEdit()
+        self.textbox = QLineEdit()
 
         # Holds individual widgets for each todo item
-        self.todo_layout = QtGui.QVBoxLayout()
+        self.todo_layout = QVBoxLayout()
 
-        self.count_label = QtGui.QLabel()
+        self.count_label = QLabel()
 
-        footer_layout = QtGui.QHBoxLayout()
+        footer_layout = QHBoxLayout()
         footer_layout.addWidget(self.count_label)
         footer_layout.addStretch(1)
 
-        self.footer = QtGui.QWidget()
+        self.footer = QWidget()
         self.footer.setLayout(footer_layout)
         self.footer.hide()
 
-        layout = QtGui.QVBoxLayout()
+        layout = QVBoxLayout()
         layout.addWidget(self.textbox)
         layout.addLayout(self.todo_layout)
         layout.addWidget(self.footer)
@@ -88,16 +95,16 @@ class TodoItemPresenter:
         self.view.delete_button.pressed.connect(self.model.delete)
 
 
-class TodoItemView(QtGui.QWidget):
+class TodoItemView(QWidget):
 
     def __init__(self):
         super().__init__()
-        self.check = QtGui.QCheckBox()
-        self.label = QtGui.QLabel()
-        self.delete_button = QtGui.QPushButton(
-            QtGui.QIcon.fromTheme("edit-delete"), "Delete")
+        self.check = QCheckBox()
+        self.label = QLabel()
+        self.delete_button = QPushButton(
+            QIcon.fromTheme("edit-delete"), "Delete")
 
-        layout = QtGui.QHBoxLayout()
+        layout = QHBoxLayout()
         layout.addWidget(self.check)
         layout.addWidget(self.label)
         layout.addStretch(1)
