@@ -1,7 +1,7 @@
 # RxPY TodoMVC
 
 This is an implementation of the popular [TodoMVC](http://todomvc.com/)
-application using [RxPY](https://github.com/ReactiveX/RxPY) and PyQt4. This
+application using [RxPY](https://github.com/ReactiveX/RxPY) and PyQt. This
 application also uses the
 [Model-View-Presenter (MVP) pattern](http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter).
 
@@ -29,7 +29,7 @@ out exactly how I should structure an MVP app with rx, and integrate with Qt.
 
 * Python 3
 * RxPY
-* PyQt4
+* PyQt4 or PyQt5
 
 To run, simply execute `python run.py`.
 
@@ -58,4 +58,4 @@ Funny how a todo app still has a todo list?
   logic still.
   - Better rx logic for uncompleted and completed streams, instead of using a
     callback function to generate them.
-- Make everything look pretty. (Should we use QML and PyQt5?)
+- Make everything look pretty. (Should we use QML?)
